@@ -28,7 +28,7 @@ This project uses two datasets:
 - **WKU dataset**  
   A self-collected dataset built from manually simulated robot patrol images on the WKU campus.
 
-  ![System Overview](dataste/wku_samples.png)
+  ![System Overview](wku_samples.png)
 
 - **Public streetcare-dataset**  
   A cleaned and reorganized public streetlight dataset, adjusted into the same four classes:
@@ -37,7 +37,7 @@ This project uses two datasets:
   - dim
   - covered
 
-  ![System Overview](dataste/public_samples.png)
+  ![System Overview](public_samples.png)
 
 The two datasets are trained and tested separately.
 
