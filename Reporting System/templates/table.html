@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Streetlight Records</title>
+
+    <style>
+        table { 
+            border-collapse: collapse; 
+            width: 90%; 
+            margin: 20px auto; 
+            font-family: Arial, sans-serif;
+        }
+        th, td { 
+            border: 1px solid #aaa; 
+            padding: 8px; 
+            text-align: center; 
+        }
+        img { 
+            width: 150px; 
+            border-radius: 6px;
+        }
+        h2 {
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Streetlight Detection Records</h2>
+
+<div style="text-align: center; margin-bottom: 20px;">
+    <img src="/static/banner.jpg" alt="Banner Image" 
+         style="width: 60%; border-radius: 10px;">
+</div>
+
+<table>
+    <tr>
+        <th>Lamp ID</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Evidence</th>
+        <th>Detection Time</th>
+        <th>Repair Worker</th>
+        <th>Repair Status</th>
+    </tr>
+
+    {% for r in rows %}
+    <tr>
+        <td>{{ r[1] }}</td>   <!-- lamp_id -->
+
+        <td>
+            {{ r[2] }}
+
+            <!-- 导航按钮 -->
+            <a href="https://www.google.com/maps/search/?api=1&query={{ r[2] }}" 
+            target="_blank"
+            style="padding: 6px 12px; background:#007bff; color:white; border-radius:6px; text-decoration:none;">
+                Maps
+            </a>
+        </td>
+
+        
+        <td>{{ r[3] }}</td>   <!-- status -->
+
+        <td>
+            <img src="{{ r[4] }}" alt="Image not found">
+        </td>
+
+        <td>{{ r[5] }}</td>   <!-- created_at -->
+
+        <td>
+            <form action="/update_worker" method="POST">
+                <input type="hidden" name="task_id" value="{{ r[0] }}">
+
+                <select name="worker_id">
+                    {% for w in workers %}
+                        <option value="{{ w[0] }}"
+                            {% if w[0] == r[8] %} selected {% endif %}>
+                            {{ w[1] }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">update</button>
+            </form>
+        </td>    
+
+        <td>{{ r[7] }}</td>   <!-- repair_status -->
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Worker Tasks</title>
+<style>
+table { border-collapse: collapse; width: 90%; margin: 20px auto; }
+th, td { border: 1px solid #aaa; padding: 8px; text-align: center; }
+img { width: 130px; }
+h2 { text-align: center; }
+</style>
+</head>
+
+<body>
+
+<h2>Tasks - {{ worker }}</h2>
+
+<table>
+    <tr>
+        <th>Lamp ID</th>
+        <th>GPS</th>
+        <th>Status</th>
+        <th>Image</th>
+        <th>Current Repair Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for r in rows %}
+    <tr>
+        <td>{{ r[1] }}</td>
+
+        <td>
+            {{ r[2] }}
+
+            <!-- 导航按钮 -->
+            <a href="https://www.google.com/maps/search/?api=1&query={{ r[2] }}" 
+            target="_blank"
+            style="padding: 6px 12px; background:#007bff; color:white; border-radius:6px; text-decoration:none;">
+                Maps
+            </a>
+        </td>
+
+        <td>{{ r[3] }}</td>
+
+        <td><img src="{{ r[4] }}"></td>
+        <td>{{ r[6] }}</td>
+
+        <td>
+            <form action="/update_status" method="POST">
+                <input type="hidden" name="task_id" value="{{ r[0] }}">
+
+                <select name="status">
+                    <option>Pending</option>
+                    <option>Received</option>
+                    <option>Processing</option>
+                    <option>Completed</option>
+                    <option>Fail</option>
+                </select>
+
+                <button type="submit">update</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
