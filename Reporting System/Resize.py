@@ -1,32 +1,3 @@
-'''
-from PIL import Image
-import os
-
-# 输入与输出文件夹路径
-input_folder = "/Users/chengzixuan/Desktop/WKU/Capstone Project/数据/WKU路灯_20251127"        # 原图所在文件夹
-output_folder = "/Users/chengzixuan/Desktop/WKU/Capstone Project/数据/WKU路灯_20251127_resize"   # 输出文件夹
-
-# 如果输出文件夹不存在则创建
-if not os.path.exists(output_folder):
-    os.makedirs(output_folder)
-
-# 遍历文件夹内所有文件
-for filename in os.listdir(input_folder):
-    if filename.lower().endswith(('.jpeg')):
-        img_path = os.path.join(input_folder, filename)
-        img = Image.open(img_path)
-
-        # 统一调整为 512x512 并保持比例 + 填充
-        img = img.resize((512, 512), Image.LANCZOS)
-
-        # 保存图片
-        save_path = os.path.join(output_folder, filename)
-        img.save(save_path)
-        print(f"Saved: {save_path}")
-
-print("All images resized to 512x512 successfully!")
-'''
-
 from PIL import Image, ExifTags
 import os
 
