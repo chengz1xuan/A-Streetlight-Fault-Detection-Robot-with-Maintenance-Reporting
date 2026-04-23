@@ -78,6 +78,8 @@ The reporting system worked effectively in the project testing. After image clas
 
 ![System Overview](Figures/admin_page.png)
 
+![System Overview](Figures/worker_page.png)
+
 ## System Functions
 
 The backend system supports:
