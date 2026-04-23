@@ -55,9 +55,9 @@ The following deep learning models are evaluated in this project:
 - ResNet18
 - ShuffleNetV2
 
-## Results Summary
+## Results
 
-### WKU Dataset
+### WKU dataset
 DenseNet121 and ResNet18 achieved the best overall performance on the WKU dataset:
 
 - Accuracy: 97.14%
@@ -65,13 +65,18 @@ DenseNet121 and ResNet18 achieved the best overall performance on the WKU datase
 - Macro Recall: 98.75%
 - Macro F1-score: 97.09%
 
-### Public Dataset
+### Public streetcare-dataset
 EfficientNetB1, MnasNet1.0, MobileNetV3, and RegNetY400MF achieved the best overall performance on the public dataset:
 
 - Accuracy: 99.17%
 - Macro Precision: 99.57%
 - Macro Recall: 98.61%
 - Macro F1-score: 99.07%
+
+### Reporting system
+The reporting system worked effectively in the project testing. After image classification, abnormal streetlight images classified as off, dim, or covered were automatically processed and recorded as fault reports. The system renamed abnormal images with related information and stored the records in the MySQL database. The backend web interface allowed administrators to view fault records, assign repair workers, and track repair progress, while workers could check assigned tasks and update repair status. These results show that the reporting system can successfully connect fault detection with maintenance management in one practical workflow.
+
+![System Overview](Figures/admin_page.png)
 
 ## System Functions
 
@@ -100,3 +105,12 @@ Repair status includes:
 - **PyMySQL**
 - **HTML / CSS**
 - **Computer Vision / Deep Learning**
+
+## Project Structure
+
+```bash
+project/
+│── Figures/
+│── Image Classification/
+│── Reporting System/
+│── README.md
