@@ -25,12 +25,12 @@ The system includes three main parts:
 
 This project uses two datasets:
 
-- **WKU Dataset**  
+- **WKU dataset**  
   A self-collected dataset built from manually simulated robot patrol images on the WKU campus.
 
   ![System Overview](dataste/wku_samples.png)
 
-- **Public Dataset**  
+- **Public streetcare-dataset**  
   A cleaned and reorganized public streetlight dataset, adjusted into the same four classes:
   - on
   - off
